@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  catogory: 1.5
+  point: 
+
+two:
+  catogory: 1.5
+  point: 

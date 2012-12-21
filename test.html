@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			function lonLat2Mercator() {
+				var xy = [];
+				var lon = document.getElementById("lon").value;
+				var lat = document.getElementById("lat").value;
+				lon = parseFloat(lon);
+				lat = parseFloat(lat);
+				var x = lon * 20037508.342789 / 180;
+				var y = Math.log(Math.tan((90+lat)*Math.PI/360))/(Math.PI/180);
+				y = y*20037508.342789/180;
+				xy[0] = x;
+				xy[1] = y;
+				var a = document.getElementById("result1");
+				
+				a.innerHTML = "(" + xy + ")";
+			}
+			function Mercator2lonLat() {
+				var xy = [];
+				var mercatorX = document.getElementById("mercatorX").value;
+				var mercatorY = document.getElementById("mercatorY").value;
+				mercatorX = parseFloat(mercatorX);
+				mercatorY = parseFloat(mercatorY);
+				var x = mercatorX/20037508.34*180;
+				var y = mercatorY/20037508.34*180;
+				y = 180/Math.PI*(2*Math.atan(Math.exp(y*Math.PI/180))-Math.PI/2);
+				xy[0] = x;
+				xy[1] = y;
+				var b = document.getElementById("result2");
+				b.innerHTML = xy;
+			}
+			
+		</script>
+	</head>
+	<body>
+		经度：<input type="text" id="lon" />纬度：<input type="text" id="lat" /><input type="button" value="换算成坐标" onclick="lonLat2Mercator();"/><span id="result1"></span><br />
+		横坐标：<input type="text" id="mercatorX" />纵坐标：<input type="text" id="mercatorY" /><input type="button" value="换算成经纬度" onclick="Mercator2lonLat();"/><span id="result2"></span>
+	</body>
+</html>

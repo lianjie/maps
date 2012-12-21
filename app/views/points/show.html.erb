@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lon:</b>
+  <%= @point.lon %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @point.lat %>
+</p>
+
+<h2>Search:</h2>>
+<% @point.searches.each do |search| %>
+<p>
+	<b>Search:</b>
+	<%= search.catogory %>
+</p>
+<% end %>
+
+<h2>Add a search:</h2>
+<%= form_for([@point,@point.searches.build]) do |f| %>
+	<div class="field">
+		<%= f.label :catogory%><br />
+		<%= f.text_field :catogory %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+
+<%= link_to 'Edit', edit_point_path(@point) %> |
+<%= link_to 'Back', points_path %>

@@ -1,0 +1,9 @@
+<%= form_for([@point,@point.searches.build]) do |f| %>
+	<div class="field">
+		<%= f.label :catogory%><br />
+		<%= f.text_field :catogory %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
